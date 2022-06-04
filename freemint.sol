@@ -9,28 +9,17 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
     address public owner;
 
     uint256 public nftid = 1;
-
-    string currentURI = "";
-
-    event Mint();
-    event SetTokenURI( uint256 , string );
-    event SetCurrentURI( string );
+    string ipfs_base = "ipfs://QmSgK4i9oEE8vtS7JvCGXsepeDYx6s7q4qse254iUU8Ds8/";
 
     function mint() public {
-        require( _msgSender() == owner );
-        _safeMint( owner , nftid);
+        //require( _msgSender() == owner );
+        _safeMint( _msgSender() , nftid);
         _setTokenURI( nftid , currentURI );
-        emit Mint();
-        emit SetTokenURI( nftid , currentURI );
         nftid++;
     }
 
-
-    function setCurrentURI( string memory _uri ) public {
-        require( _msgSender() == owner  );
-        //ipfs://Qm....... or https://arweave.net/......  etc.
-        currentURI = _uri;
-        emit SetCurrentURI( _uri );
+    function _baseURI() internal view override returns (string memory) {
+        return ipfs_base;
     }
 
     function setTokenURI( uint targetnftid ,string memory _uri ) public {
