@@ -9,7 +9,8 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
     address public owner;
 
     uint256 public nftid = 1;
-    string ipfs_base = "ipfs://QmSgK4i9oEE8vtS7JvCGXsepeDYx6s7q4qse254iUU8Ds8/";
+//  example string ipfs_base = "ipfs://QmSgK4i9oEE8vtS7JvCGXsepeDYx6s7q4qse254iUU8Ds8/";
+    string ipfs_base = "";
 
     function mint() public {
         //require( _msgSender() == owner );
