@@ -22,6 +22,11 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
         return ipfs_base;
     }
 
+    function setBaseURI(string memory _uri) public {
+        require( _msgSender() == owner );
+        ipfs_base = _uri;
+    }
+
     function setTokenURI( uint targetnftid ,string memory _uri ) public {
         require( _msgSender() == owner );
         //ipfs://Qm....... or https://arweave.net/......  etc.
@@ -69,6 +74,5 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
     constructor() ERC721("nft" , "NFT" ) {
         owner = _msgSender();
     } 
-
 
 }
