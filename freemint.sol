@@ -14,7 +14,6 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
     function mint() public {
         //require( _msgSender() == owner );
         _safeMint( _msgSender() , nftid);
-        _setTokenURI( nftid , currentURI );
         nftid++;
     }
 
@@ -26,7 +25,6 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
         require( _msgSender() == owner );
         //ipfs://Qm....... or https://arweave.net/......  etc.
         _setTokenURI( targetnftid , _uri );
-        emit SetTokenURI( targetnftid , _uri );
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
@@ -73,4 +71,3 @@ contract nft is  ERC721URIStorage , ERC721Enumerable {
 
 
 }
-
