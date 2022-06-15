@@ -8,7 +8,6 @@ window.onload = async ()=>{
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner()
     smartcontract = await new ethers.Contract(contract,abi,signer);
-    // http://smartcontract.mint();
     const mintbutton = document.querySelector("#mintbutton");
     mintbutton.addEventListener("click",()=>{smartcontract.mint();});
 }
